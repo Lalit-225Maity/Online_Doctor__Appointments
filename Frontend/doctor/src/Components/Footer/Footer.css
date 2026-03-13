@@ -1,0 +1,91 @@
+.footer {
+    width: 100%;
+    background-color:#BF4646;
+    /* Dark navy background */
+    color: #EDDCC6;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 50px 60px;
+    gap: 40px;
+}
+
+/* All city sections */
+.delhi-doctor,
+.mumbai-doctor,
+.chennai-doctor,
+.bangalore-doctor {
+    flex: 1;
+    min-width: 200px;
+}
+
+/* Headings */
+.footer h5 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #EDDCC6;
+    /* Light blue heading */
+    font-weight: 600;
+}
+
+/* Paragraph Links */
+.footer p {
+    font-size: 14px;
+    margin: 6px 0;
+    cursor: pointer;
+    transition: 0.3s ease;
+    color: #e2e8f0;
+}
+
+.footer p:hover {
+    color: #38bdf8;
+    transform: translateX(5px);
+}
+
+/* Social Section */
+.access-app {
+    flex: 1;
+    min-width: 220px;
+}
+
+.social-access {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-access img {
+    width: 30px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.social-access img:hover {
+    transform: scale(1.2);
+}
+
+/* App Store Images */
+.access-app img {
+
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.access-app img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .footer {
+        padding: 40px 30px;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+    }
+}

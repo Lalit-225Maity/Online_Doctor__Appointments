@@ -1,0 +1,120 @@
+.myappointment {
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 170px;
+    padding: 40px 20px;
+    background-color: #f5f7fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Main Heading */
+.myappointment>h4 {
+    font-size: 30px;
+
+    font-weight: 600;
+    margin-bottom: 35px;
+    text-align: center;
+    color: #222;
+}
+
+.myappointment>h4::after {
+    content: "";
+    display: block;
+    width: 95%;
+    height: 4px;
+    background-color: #FF5B5B;
+    margin: 8px auto 0 auto;
+    border-radius: 5px;
+}
+
+/* Appointment Card */
+.myappointment-details {
+    width: 75%;
+    background: #ffffff;
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 15px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    transition: 0.3s ease;
+}
+
+.myappointment-details:hover {
+    transform: translateY(-5px);
+}
+
+/* Left Side Image */
+.doctor-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.doctor-image img {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 3px solid #e3e8ee;
+}
+
+/* Right Side Details */
+.user-appoint-details {
+    flex: 2;
+}
+
+.user-appoint-details h4 {
+    font-size: 18px;
+    color: #2c7be5;
+    margin-bottom: 10px;
+}
+
+.user-appoint-details h5 {
+    font-size: 20px;
+    margin: 12px 0 8px;
+    color: #333;
+}
+
+.user-appoint-details p {
+    font-size: 15px;
+    margin: 6px 0;
+    color: #555;
+}
+
+/* Date & Time */
+.appoint-time-date {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+    font-weight: 500;
+}
+
+/* Booking Status */
+.user-appoint-details p:last-child {
+    font-weight: 600;
+    color: green;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .myappointment-details {
+        flex-direction: column;
+        text-align: center;
+        width: 95%;
+    }
+
+    .doctor-image img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .appoint-time-date {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}

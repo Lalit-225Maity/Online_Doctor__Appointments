@@ -1,0 +1,226 @@
+.appointment {
+    margin-top: 170px;
+    width: 100%;
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f9fbfc;
+}
+
+.appointment img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+.doc-appoiont-schedule {
+    width: 80%;
+    margin: 40px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.doc-appoiont-schedule::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: #e0e0e0;
+    z-index: 1;
+}
+
+.doc-appoiont-schedule .circle-1,
+.doc-appoiont-schedule .circle-2,
+.doc-appoiont-schedule .circle-3 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #c8e6c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1b5e20;
+    transition: 0.3s;
+    z-index: 2;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+ 
+.doc-appoiont-schedule .circle-1 {
+    background-color: #FF5B5B;
+    color: #FFCE99;
+}
+
+.schedule-appointment,
+.patient,
+.confirmation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.schedule-appointment p,
+.patient p,
+.confirmation p {
+    margin-top: 10px;
+    font-weight: 600;
+    color: #333;
+}
+
+
+.e-appointment {
+    width: 80%;
+    margin: 30px auto 80px auto;
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+.button {
+     
+    margin-top: 30px;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2e7d32, #43a047);
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(46, 125, 50, 0.3);
+}
+
+.e-appointment span {
+    color: #2e7d32;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.e-appointment h4 {
+    margin-top: 8px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #222;
+}
+
+
+.doc-name-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.doc-name-price span {
+    background-color: #e8f5e9;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #1b5e20;
+}
+
+
+.day-timmings {
+    margin-bottom: 30px;
+}
+
+.day-timmings h4 {
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+    color: #444;
+}
+
+.day-timmings p {
+    font-weight: 500;
+    color: #2e7d32;
+}
+
+
+.patient-department {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+}
+
+.department,
+.your-doctor,
+.appointment-date {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 250px;
+}
+
+.department h4,
+.your-doctor h4,
+.appointment-date h4 {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #333;
+}
+
+.department input,
+.your-doctor input,
+.appointment-date input {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.department input:focus,
+.your-doctor input:focus,
+.appointment-date input:focus {
+    outline: none;
+    border-color: #2e7d32;
+    box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker__input-container input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--keyboard-selected {
+    background-color: #2e7d32 !important;
+    color: #fff !important;
+}
+
+ 
+@media (max-width: 768px) {
+    .doc-appoiont-schedule {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .doc-appoiont-schedule::before {
+        display: none;
+    }
+
+    .doc-name-price {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .patient-department {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,98 @@
+ 
+.question-ans {
+    width: 100%;
+    padding: 60px 20px;
+    background-color: #f7f9fc;
+    display: flex;
+    justify-content: center;
+}
+
+.question-doctors {
+    width: 80%;
+   
+     
+    
+    
+}
+
+.question-doctors h4 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 5px;
+}
+
+.question-doctors h5 {
+    font-size: 14px;
+    color: gray;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.questions-doc-ans {
+    display: flex;
+ 
+ flex-wrap: wrap;
+ 
+    gap: 15px;
+}
+
+.doctor-suggestions {
+    background-color: #ffffff;
+    padding: 25px;
+    width: 48%;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: 0.3s ease;
+}
+
+.doctor-suggestions:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.doctor-suggestions h5 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.doc-suggest {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.doc-name-exp-dept {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.doc-name-exp-dept img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+}
+
+.doc-name-exp-dept span p:first-child {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+    margin: 0;
+}
+
+.doc-name-exp-dept span p:last-child {
+    font-size: 13px;
+    color: #0a8f3d;
+    margin: 2px 0 0 0;
+}
+
+.doc-suggest>p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}

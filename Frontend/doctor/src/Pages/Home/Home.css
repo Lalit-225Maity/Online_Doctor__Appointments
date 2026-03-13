@@ -1,0 +1,270 @@
+.home {
+    width: 100%;
+    min-height: 200vh;
+    margin-top: 170px;
+ 
+}
+
+
+.search-box {
+    width: 100%;
+    height: fit-content;
+    background: linear-gradient(180deg, #e6f7fa, #ffffff);
+    padding: 50px 40px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: center;
+   
+}
+
+
+.search-box .typewriter {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    min-height: 40px;
+
+    margin-bottom: 30px;
+}
+
+
+.popup-search {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+.popup-box {
+    background: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.3s ease;
+}
+
+
+.popup-box p {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* ===== Loader Animation ===== */
+.loader {
+    width: 35px;
+    height: 35px;
+    border: 4px solid #eee;
+    border-top: 4px solid #00bcd4;
+    border-radius: 50%;
+    margin: 0 auto;
+    animation: spin 0.8s linear infinite;
+}
+
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.search {
+    display: flex;
+
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.search-desease {
+    position: absolute;
+    top: 100%;
+    width: 59%;
+    left: 5%;
+    margin-left: 10%;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 1000;
+    border: 1px solid #eee;
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+
+
+/* Suggestion Items */
+.search-desease p {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f1f1f1;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.search-desease p:last-child {
+    border-bottom: none;
+}
+
+.search-desease p:hover {
+    background-color: #f5f9ff;
+    color: #2e86de;
+}
+
+
+.search input {
+    width: 60%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+.search input::placeholder {
+    color: #888;
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 1;
+}
+
+.search button {
+    padding: 12px 40px;
+    width: 10%;
+    border: none;
+    background-color: #00bcd4;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.search button:hover {
+    background-color: #0097a7;
+}
+
+
+
+.topics {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.topics p {
+    background: #f1f1f1;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.topics p:first-child {
+    background: none;
+    font-weight: 600;
+    cursor: default;
+}
+
+.topics p:not(:first-child):hover {
+    background: #00bcd4;
+    color: white;
+}
+
+/* Discover Section */
+.discover {
+    margin-top: 40px;
+    padding: 20px;
+    background: #e6f7fa;
+    border-radius: 10px;
+
+}
+
+.discover p {
+    font-size: 15px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.discover button {
+    padding: 10px 25px;
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.discover button:hover {
+    background-color: #0097a7;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+
+    .search-box {
+        padding: 30px 20px;
+    }
+
+    .search-box span {
+        font-size: 22px;
+    }
+
+    .search {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .search input {
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    .search button {
+        width: 100%;
+        border-radius: 30px;
+    }
+
+    .topics {
+        gap: 8px;
+    }
+}

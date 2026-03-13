@@ -1,0 +1,24 @@
+.my-surgery {
+    width: 100%;
+    margin-top: 175px;
+    display: flex;
+    justify-content: center;
+}
+
+.my-surgery-img {
+    width: 70%;
+    display: flex;
+      
+    flex-direction: column;
+
+}
+.my-surgery-img span img {
+    width: 100px;
+}
+
+.my-surgery-img span {
+    display: flex;
+ 
+    flex-direction: row;
+    justify-content: space-between;
+}
