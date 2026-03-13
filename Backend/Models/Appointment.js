@@ -1,0 +1,36 @@
+const { Schema, model } = require('mongoose');
+const Appointment = new Schema({
+    UserID: {
+        type: String,
+    },
+    Username: {
+        type: String
+    },
+    PaymentMethod: {
+        type: String,
+    },
+    Paid: {
+        type: String,
+
+    },
+    Appoint_Date: {
+        type: String
+    },
+    Mobile: {
+        type: String
+    },
+    DoctorName: {
+        type: String
+    },
+    Department: {
+        type: String
+    },
+    image:{
+        type:String
+    },
+    time:{
+        type:String
+    }
+})
+const ConfirmAppointment = model("Appointment", Appointment);
+module.exports = ConfirmAppointment 
