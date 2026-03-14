@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const cookie = require('cookie-parser');
 const User = require('../Models/UserModel')
 router.post('/create', (req, res) => {
     try {
@@ -16,7 +15,7 @@ router.post('/create', (req, res) => {
                     PhoneNumber,
                     Address
                 });
-                const token = jwt.sign({ Email }, "shhhhhhh");
+                const token = jwt.sign({id: customer._id, email: customer.Email }, "shhhhhhh");
                 res.cookie("token", token)
                 await customer.save();
                 res.status(200).json({
@@ -45,7 +44,7 @@ router.post('/login', async (req, res) => {
         }
         bcrypt.compare(Password, Check.Password, (err, result) => {
             if (result) {
-                const token = jwt.sign({ Email: Check.Email }, "shhhhhhh");
+                const token = jwt.sign({ id:Check._id,Email: Check.Email }, "shhhhhhh");
                 res.cookie("token", token);
                 res.status(200).json({
                     message: "welcome user",

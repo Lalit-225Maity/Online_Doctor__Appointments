@@ -3,19 +3,33 @@ import axios from 'axios'
 import './Myappointment.css'
 const MyAppointment = () => {
     const [booking, setbooking] = useState([]);
-    
+    const Cancel = async (ID) => {
+
+
+        try {
+            const response2 = await axios.delete('/api/cancelappointment', {
+                data: { appointmentId:ID }
+              
+            })
+             console.log(response2.data.Cancel);
+             
+        } catch (error) {
+
+        }
+
+    }
     useEffect(() => {
         (async () => {
             try {
-                const useremail = localStorage.getItem("Email_ID");
-                const user = JSON.parse(useremail);
-                console.log(user);
 
-                if (user) {
-                    const response = await axios.get(`/api/appointmentdetails?UserCheck=${user}`);
-                    console.log(response.data.Book);
-                    setbooking(response.data.Book)
-                }
+                const response = await axios.get(
+                    "/api/appointmentdetails",
+                    { withCredentials: true }
+                );
+
+                console.log(response.data.Book);
+                setbooking(response.data.Book);
+
             } catch (error) {
                 console.log(error.response.data.message);
 
@@ -41,9 +55,11 @@ const MyAppointment = () => {
                             <p>Appointment Date : {i.Appoint_Date}</p>|<p>Time Slot : {i.time}</p>
                         </div>
                         <p>Booking Status : {i.Paid}</p>
-
+     <button onClick={() => { Cancel(i._id) }} style={{backgroundColor:"red"}}>Cancel</button>
                     </div>
+                 
                 </div>
+                
             ))}
         </div>
     )

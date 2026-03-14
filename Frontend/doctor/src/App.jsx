@@ -10,6 +10,7 @@ import Signup from './Pages/Admin/Signup/Signup';
 import { useLocation } from 'react-router-dom';
 import ForDoctor from './Pages/ForDoctor/ForDoctor';
 import GetApp from './Pages/GetApp/GetApp';
+import ProtectRoute from './Components/ProtectRoute/Protect';
 import Confirmation from './Pages/Appointment/Confirmation/Confirmation';
 import PersonalDetails from './Pages/Appointment/PersonalDetails';
 import MyAppointment from './Pages/MyAppointment/MyAppointment';
@@ -23,18 +24,21 @@ const App = () => {
       {location.pathname !== '/login' && <Navbar />}
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/doctors' element={<Doctors />} />
-        <Route path='/appointment' element={<Appointment />} />
+        <Route element={<ProtectRoute />}>
+          <Route path='/fordoctor' element={<ForDoctor />} />
+          <Route path='/getapp' element={<GetApp />} />
+          <Route path='/personalinfo' element={<PersonalDetails />} />
+          <Route path='/confirm' element={<Confirmation />} />
+          <Route path='/myappointment' element={<MyAppointment />} />
+          <Route path='/payment' element={<Payment />} />
+          <Route path='/my-surgery' element={<Mysurgery />} />
+          <Route path='/doctors' element={<Doctors />} />
+          <Route path='/appointment' element={<Appointment />} />
+          <Route path='/free' element={<FreeAppoint />} />
+        </Route>
         <Route path='/login' element={<Login />} />
-        <Route path='/free' element={<FreeAppoint />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/fordoctor' element={<ForDoctor />} />
-        <Route path='/getapp' element={<GetApp />} />
-        <Route path='/personalinfo' element={<PersonalDetails />} />
-        <Route path='/confirm' element={<Confirmation />} />
-        <Route path='/myappointment' element={<MyAppointment />} />
-        <Route path='/payment' element={<Payment />} />
-        <Route path='/my-surgery' element={<Mysurgery/>}/>
+
       </Routes>
       {location.pathname !== '/login' && location.pathname !== '/signup' && <Footer />}
     </div>

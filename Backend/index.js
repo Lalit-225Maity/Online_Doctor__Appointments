@@ -1,7 +1,9 @@
 const express=require('express');
 const dotenv=require('dotenv');
+const cookie = require('cookie-parser');
 const app=express();
 app.use(express.json());
+app.use(cookie())
 dotenv.config();
 const Database=require('./Database/db');
 Database();

@@ -1,13 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const verifyAuth = require('../Middleware/Auth.js');
 const AppointmentConfirm = require('../Models/Appointment')
-router.post('/pay', async (req, res) => {
+router.post('/pay', verifyAuth, async (req, res) => {
     try {
+        const userId = req.user.id;
         const { UserID, PaymentMethod, Debit_Card, UPI_ID, DebitCard_Password, Username, Paid, Appoint_Date,
             Mobile,
             DoctorName,
             Department,
-            image,time } = req.body;
+            image, time } = req.body;
         let Payment_Process;
         if (PaymentMethod === 'UPI') {
             if (!(/^[a-zA-Z0-9._-]{2,256}@[a-zA-Z]{2,64}$/.test(UPI_ID))) {
@@ -16,7 +18,7 @@ router.post('/pay', async (req, res) => {
                 })
             }
             Payment_Process = new AppointmentConfirm({
-                PaymentMethod, UserID, Username, Paid, Appoint_Date,
+                PaymentMethod, UserID: userId, Username, Paid, Appoint_Date,
                 Mobile,
                 DoctorName,
                 Department,
@@ -38,7 +40,7 @@ router.post('/pay', async (req, res) => {
             }
 
             Payment_Process = new AppointmentConfirm({
-                PaymentMethod, UserID, Username, Paid, Appoint_Date,
+                PaymentMethod, UserID: userId, Username, Paid, Appoint_Date,
                 Mobile,
                 DoctorName,
                 Department,
@@ -61,13 +63,15 @@ router.post('/pay', async (req, res) => {
         })
     }
 })
-router.get('/appointmentdetails', async (req, res) => {
+router.get('/appointmentdetails', verifyAuth, async (req, res) => {
     try {
-        const { UserCheck } = req.query;
+        const userId = req.user.id;
+
         const Fetch = await AppointmentConfirm.find({
-            UserID: { $in: UserCheck }
+            UserID: userId
         });
         res.status(200).json({
+            message: "Success",
             Book: Fetch
         })
 
@@ -78,11 +82,13 @@ router.get('/appointmentdetails', async (req, res) => {
         })
     }
 })
-router.delete('/cancelappointment', async (req, res) => {
+router.delete('/cancelappointment', verifyAuth, async (req, res) => {
     try {
-        const { Userid } = req.query;
+        const userId = req.user.id;
+        const {appointmentId}=req.body;
         const Cancel = await AppointmentConfirm.findOneAndDelete({
-            UserID: { $in: Userid }
+            _id: appointmentId,
+            UserID:userId
         })
         res.status(200).json({
             success: true,
