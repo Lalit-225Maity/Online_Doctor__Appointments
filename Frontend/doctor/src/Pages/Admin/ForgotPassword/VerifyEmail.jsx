@@ -3,31 +3,74 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import './Verify.css'
+import axios from 'axios'
 const VerifyEmail = () => {
+    const [err,seterr] = useState('');
+    const [usermail, setusermail] = useState(false);
+    const [myemail, setmyemail] = useState("");
+    const[userotp,setuserotp]=useState(false);
+     const [otperr, setotperr] = useState('');
     const navigate=useNavigate();
     const Verification = async (data) => {
         await new Promise((resolve, reject) => {
-            setTimeout(() => {
-                console.log(data);
-                if (data.Email) {
-                    alert("We send a verification code in Email")
-                    setEmailValue(true);
+            setTimeout(async() => {
+               try {
+              
+                const response=await axios.post('/api/sendOTP',data);
+                console.log(response.data.OTP);
+                resolve("Sucesss");
+                setmyemail(data.Email);
+                console.log(data.Email);
+                setusermail(true);
+                     
+                if(response){
+                    setEmailValue(true)
                 }
-                resolve("success")
+                
+               } catch (error) {
+                const wrong=error.response.data.message;
+               console.log(wrong);
+               setusermail(true)
+               
+                seterr(wrong)
+                reject("False")
+                
+               }
             }, 3000);
         })
     }
     const {
-        register,
+        register:Emailregister,
 
-        handleSubmit,
+        handleSubmit:handleEmailSubmit,
 
-        formState: { isSubmitting }
-    } = useForm()
-    const VerifyOTP=async()=>{
+        formState: { isSubmitting:Emailsubmitting }
+    } = useForm();
+    const{
+        register:otpregister,
+        handleSubmit:otpsubmit,
+        formState:{isSubmitting:otpsubmitting}
+    }=useForm();
+    const VerifyOTP=async(data)=>{
         await new Promise((resolve, reject) => {
-            setTimeout(() => {
-                navigate('/createnewpassword')
+            setTimeout(async() => {
+             try {
+                const newData={...data,
+                    Email:myemail
+                }
+                     const response=await axios.post('/api/verifyotp',newData);
+                 console.log(response.data);
+                 setuserotp(false);
+                 if(response){
+                    navigate('/createnewpassword',{state:{myemail}});
+                 }
+                 resolve("succsss")
+             } catch (error) {
+                const otperrs=error.response.data.message;
+                setuserotp(true);
+                setotperr(otperrs);
+                reject("Wrong")
+             }
             }, 3000);
         })
     }
@@ -37,30 +80,31 @@ const VerifyEmail = () => {
         <div className='verify'>
 
             <div className="verify-conatiner">
-                <div className="verify-mail">  <form onSubmit={handleSubmit(Verification)}>
+                <div className="verify-mail">  <form onSubmit={handleEmailSubmit(Verification)}>
                     <div className="verify-user">
                         <label>Email Address</label>
-                        <input type="email" {...register("Email")} placeholder='Email Address' />
+                        <input type="email" {...Emailregister("Email",{required:{value:true}})} placeholder='Email Address' />
                     </div>
-                    <button type="submit">send OTP</button>
-                    {isSubmitting && (
-                        <div className="popup-verify">
-                            <div className="loading-overlay">
-                                <div className="spinner"></div>
-                                <p>Sending verification code...</p>
-                            </div>
-                        </div>
-                    )}
+                    <button type="submit"> {Emailsubmitting ? (
+                        <span className="popup-verify"></span>
+                    ):("send OTP")}</button>
+                    
 
-                </form></div>
+                </form>
+                {usermail&&<p className='mailconfirm'>{err}</p>}
+                </div>
                 {EmailValue && (
                     <div className="verify-otp">
                   
-                        <form onSubmit={handleSubmit(VerifyOTP)}>
+                        <form onSubmit={otpsubmit(VerifyOTP)}>
                             
-                            <div className="otp-verify"><label>Verify OTP</label> <input type="text" {...register("OTP",{required:{}})} /></div>
-                            <button type="submit">verify OTP</button>
+                            <div className="otp-verify"><label>Verify OTP</label> <input type="text" {...otpregister("OTP",{required:{value:true}})} /></div>
+                            <button type="submit">{otpsubmitting?(
+                                <div className="otp-verification"></div>
+                            ):("verify")}</button>
+                          
                         </form>
+                        {userotp&&<p className='otperror'>{otperr}</p>}
                     </div>
 
                 )}

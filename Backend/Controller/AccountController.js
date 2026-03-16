@@ -55,11 +55,16 @@ const VerifyOTP = async (req, res) => {
 }
 const NewPassword = async (req, res) => {
     try {
-        const { Email, newPassword } = req.body;
+        const { Email, newPassword,ConfirmPassword } = req.body;
         const user = await User.findOne({ Email });
         if (!user) {
             return res.status(404).json({
                 message: "User does not exists"
+            })
+        }
+        if(ConfirmPassword!==newPassword){
+            return res.status(404).json({
+                message:"Password mismatch"
             })
         }
         const salt = await bcrypt.genSalt(10);

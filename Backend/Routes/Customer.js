@@ -6,7 +6,12 @@ const User = require('../Models/UserModel');
 const { CreateOTP, VerifyOTP, NewPassword } = require('../Controller/AccountController')
 router.post('/create', (req, res) => {
     try {
-        const { Name, Email, PhoneNumber, Password, Address } = req.body;
+        const { Name, Email, PhoneNumber, Password, Address,ConfirmPassword } = req.body;
+        if(ConfirmPassword!==Password){
+            return res.status(404).json({
+                message:"Password mismatch"
+            })
+        }
         bcrypt.genSalt(10, (err, salt) => {
             bcrypt.hash(Password, salt, async (err, hash) => {
                 const customer = new User({

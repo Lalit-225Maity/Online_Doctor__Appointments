@@ -36,6 +36,7 @@ const Login = () => {
           }, 2000);
         } catch (error) {
           setloginerr(error.response.data.message);
+          reject("Error")
         }
       }, 3000);
     })

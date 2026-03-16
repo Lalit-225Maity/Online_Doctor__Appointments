@@ -21,7 +21,10 @@ const Signup = () => {
           navigate('/login');
 
         } catch (error) {
-          console.log(error.message);
+           const err=error.response.data.message;
+           console.log(err);
+           reject("False")
+           
 
         }
       }, 3000);
@@ -39,10 +42,13 @@ const Signup = () => {
           <input type="email" placeholder='Email' {...register("Email")} />
           <label>Mobile No.</label>
           <input type="tel" placeholder='Mobile No.' {...register("PhoneNumber")} />
+           <label>Address</label>
+          <input type="text" placeholder='Address' {...register("Address")} />
           <label>Create password</label>
           <input type="password" placeholder='Password'  {...register("Password")} />
-          <label>Address</label>
-          <input type="text" placeholder='Address' {...register("Address")} />
+          <label>Retype Password</label>
+          <input type="password" placeholder='retype password' {...register("ConfirmPassword")} />
+          
           <input type="submit" value={isSubmitting ? "creating account....." : "Create account"} />
         </form>
       </div>
