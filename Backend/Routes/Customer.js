@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../Models/UserModel')
+const User = require('../Models/UserModel');
+const { CreateOTP, VerifyOTP, NewPassword } = require('../Controller/AccountController')
 router.post('/create', (req, res) => {
     try {
         const { Name, Email, PhoneNumber, Password, Address } = req.body;
@@ -15,7 +16,7 @@ router.post('/create', (req, res) => {
                     PhoneNumber,
                     Address
                 });
-                const token = jwt.sign({id: customer._id, email: customer.Email }, "shhhhhhh");
+                const token = jwt.sign({ id: customer._id, email: customer.Email }, "shhhhhhh");
                 res.cookie("token", token)
                 await customer.save();
                 res.status(200).json({
@@ -44,14 +45,17 @@ router.post('/login', async (req, res) => {
         }
         bcrypt.compare(Password, Check.Password, (err, result) => {
             if (result) {
-                const token = jwt.sign({ id:Check._id,Email: Check.Email }, "shhhhhhh");
-                res.cookie("token", token);
+                const token = jwt.sign({ id: Check._id, Email: Check.Email }, "shhhhhhh");
+                res.cookie("token", token, {
+                    httpOnly: true,
+                    secure: false,
+                });
                 res.status(200).json({
                     message: "welcome user",
                     user: Check
                 })
             } else {
-                 res.status(500).json({
+                res.status(500).json({
                     message: "Invalid Password"
                 })
             }
@@ -63,14 +67,17 @@ router.post('/login', async (req, res) => {
         })
     }
 })
-router.post('/logout',(req,res)=>{
+router.post('/logout', (req, res) => {
     try {
         res.clearCookie("token");
         res.status(200).json({
-            message:"user is logout"
+            message: "user is logout"
         })
     } catch (error) {
-        
+
     }
 })
+router.post('/sendOTP', CreateOTP);
+router.post('/verifyotp', VerifyOTP);
+router.post('/forgotpassword', NewPassword);
 module.exports = router

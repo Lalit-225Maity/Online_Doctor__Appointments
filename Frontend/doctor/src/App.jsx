@@ -8,6 +8,8 @@ import Login from './Pages/Admin/Login/Login';
 import FreeAppoint from './Pages/FreeAppointment/FreeAppoint';
 import Signup from './Pages/Admin/Signup/Signup';
 import { useLocation } from 'react-router-dom';
+import VerifyEmail from './Pages/Admin/ForgotPassword/VerifyEmail';
+import CreateNewpassword from './Pages/Admin/ForgotPassword/CreateNewpassword';
 import ForDoctor from './Pages/ForDoctor/ForDoctor';
 import GetApp from './Pages/GetApp/GetApp';
 import ProtectRoute from './Components/ProtectRoute/Protect';
@@ -21,7 +23,7 @@ const App = () => {
   const location = useLocation();
   return (
     <div>
-      {location.pathname !== '/login' && <Navbar />}
+      {location.pathname !== '/login' && location.pathname !== '/createnewpassword' && location.pathname !== '/verify' && <Navbar />}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route element={<ProtectRoute />}>
@@ -36,11 +38,13 @@ const App = () => {
           <Route path='/appointment' element={<Appointment />} />
           <Route path='/free' element={<FreeAppoint />} />
         </Route>
+        <Route path='/verify' element={<VerifyEmail />} />
+        <Route path='/createnewpassword' element={<CreateNewpassword />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
 
       </Routes>
-      {location.pathname !== '/login' && location.pathname !== '/signup' && <Footer />}
+      {location.pathname !== '/login' && location.pathname !== '/signup' && location.pathname !== '/createnewpassword' && location.pathname !== '/verify' && <Footer />}
     </div>
   )
 }

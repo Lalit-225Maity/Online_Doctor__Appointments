@@ -8,11 +8,11 @@ const MyAppointment = () => {
 
         try {
             const response2 = await axios.delete('/api/cancelappointment', {
-                data: { appointmentId:ID }
-              
+                data: { appointmentId: ID }
+
             })
-             console.log(response2.data.Cancel);
-             
+            console.log(response2.data.Cancel);
+
         } catch (error) {
 
         }
@@ -55,11 +55,11 @@ const MyAppointment = () => {
                             <p>Appointment Date : {i.Appoint_Date}</p>|<p>Time Slot : {i.time}</p>
                         </div>
                         <p>Booking Status : {i.Paid}</p>
-     <button onClick={() => { Cancel(i._id) }} style={{backgroundColor:"red"}}>Cancel</button>
+                        <button onClick={() => { Cancel(i._id) }} style={{ backgroundColor: "red" }}>Cancel</button>
                     </div>
-                 
+
                 </div>
-                
+
             ))}
         </div>
     )

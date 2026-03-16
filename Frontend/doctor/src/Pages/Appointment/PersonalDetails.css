@@ -103,9 +103,9 @@ label {
 }
 
 
-input[type="text"],
-input[type="tel"],
-input[type="email"],
+.Patientname input[type="text"],
+.Patientname input[type="tel"],
+.Patientname input[type="email"],
 .react-datepicker-wrapper input {
     padding: 10px 12px;
     border-radius: 6px;

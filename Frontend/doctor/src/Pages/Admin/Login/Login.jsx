@@ -61,9 +61,13 @@ const Login = () => {
         <label>Password</label>
         <input type='password' placeholder='Password' {...register('Password')} />
         <input type="submit" value={isSubmitting ? "Loging...." : "Login"} />
+        {loginerr && <p style={{ color: "red" }}>{loginerr}</p>}
+        <div className="forgot-create">
+          <NavLink to='/signup'>Create Account</NavLink>
+          <NavLink to='/verify'>Forgot Password ?</NavLink>
+        </div>
       </form>
-      {loginerr && <p style={{ color: "red" }}>{loginerr}</p>}
-      <NavLink to='/signup'>Create Account</NavLink>
+
 
     </div>
   )
