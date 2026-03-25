@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import TextField from '@mui/material/TextField'
 import { useNavigate } from 'react-router-dom'
 import './Verify.css'
 import axios from 'axios'
@@ -82,8 +83,8 @@ const VerifyEmail = () => {
             <div className="verify-conatiner">
                 <div className="verify-mail">  <form onSubmit={handleEmailSubmit(Verification)}>
                     <div className="verify-user">
-                        <label>Email Address</label>
-                        <input type="email" {...Emailregister("Email",{required:{value:true}})} placeholder='Email Address' />
+                        <TextField label="Email" type="email" {...Emailregister("Email",{required:{value:true}})} placeholder='Email Address' 
+                        />
                     </div>
                     <button type="submit"> {Emailsubmitting ? (
                         <span className="popup-verify"></span>

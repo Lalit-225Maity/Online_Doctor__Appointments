@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 const Login = () => {
@@ -26,10 +27,10 @@ const Login = () => {
 
           resolve("Success");
 
-          const Name = response.data.user.Name;
-          setuserName(Name);
+          const Names = response.data.user.Name;
+          setuserName(Names);
           const Email = response.data.user.Email;
-          localStorage.setItem("Name", JSON.stringify(Name));
+          localStorage.setItem("Name", JSON.stringify(Names));
           localStorage.setItem("Email_ID", JSON.stringify(Email));
           setTimeout(() => {
             navigate('/');
@@ -57,11 +58,10 @@ const Login = () => {
       )}
       <h4>Login</h4>
       <form onSubmit={handleSubmit(Mysubmit)}>
-        <label>Email</label>
-        <input type="email" placeholder='Email'{...register('Email')} />
-        <label>Password</label>
-        <input type='password' placeholder='Password' {...register('Password')} />
-        <input type="submit" value={isSubmitting ? "Loging...." : "Login"} />
+        <TextField label="Email" type="email" placeholder='Email'{...register('Email')} variant="outlined"  />
+         <TextField label="Password" type='password' placeholder='Password' {...register('Password')}  variant="outlined" className='textfield-pass'/>
+         <button type="submit">{isSubmitting?(<div className="submit-load"></div>
+         ):("Login")}</button>
         {loginerr && <p style={{ color: "red" }}>{loginerr}</p>}
         <div className="forgot-create">
           <NavLink to='/signup'>Create Account</NavLink>

@@ -50,47 +50,11 @@
   gap: 8px;
 }
 
-/* Label */
-.verify-user label {
-  font-size: 14px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.9);
-}
 
-/* Input */
-.verify-user input {
-  height: 46px;
-  padding: 0 14px;
-
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-
-  background: rgba(255, 255, 255, 0.08);
-  color: #fff;
-
-  font-size: 14px;
-  outline: none;
-
-  transition: all 0.25s ease;
-}
-
-/* Placeholder */
-.verify-user input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* Focus */
-.verify-user input:focus {
-  border-color: #4da6ff;
-  background: rgba(255, 255, 255, 0.14);
-
-  box-shadow: 0 0 0 2px rgba(77, 166, 255, 0.35);
-}
-
-/* ===== SEND OTP BUTTON ===== */
+ 
 .verify-mail button {
  height: 46px;
-  width: 100px; /* 🔥 add this */
+  width: 100px;  
 
   border: none;
   border-radius: 999px;
@@ -114,14 +78,14 @@
   box-shadow: 0 6px 18px rgba(37, 99, 235, 0.5);
 }
 
-/* ===== OTP SECTION ===== */
+ 
 .verify-otp form {
   display: flex;
   align-items: flex-end;
   gap: 12px;
 }
 
-/* OTP field wrapper */
+
 .otp-verify {
   flex: 1;
   display: flex;
@@ -136,7 +100,10 @@
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* OTP input */
+  .MuiOutlinedInput-root,
+.MuiOutlinedInput-notchedOutline {
+   border-radius: 20px !important;
+}
 .otp-verify input {
   height: 46px;
   padding: 0 14px;

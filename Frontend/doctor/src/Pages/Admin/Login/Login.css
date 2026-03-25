@@ -11,17 +11,21 @@
 
 /* Frosted glass form */
 .login form {
-  width: 360px;
-  background: rgba(255, 255, 255, 0.15); 
-  backdrop-filter: blur(15px);  
-  -webkit-backdrop-filter: blur(15px);
-  border-radius: 20px;
+   width: 360px;
   padding: 40px 35px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  color: #fff;
+  gap: 20px;
+
+  color: white;
 }
 
 /* Heading */
@@ -35,50 +39,54 @@
   padding-bottom: 10px;
 }
 
-/* Labels */
-.login label {
-  font-size: 13px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
-}
+ 
+ 
+ 
 
-/* Inputs */
-.login input[type="email"],
-.login input[type="password"] {
-  padding: 12px 15px;
-  border: 1px solid rgba(255,255,255,0.4);
-  border-radius: 8px;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #fff;
-  outline: none;
-  transition: 0.3s ease;
-}
-
-.login input:focus {
-  border-color: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 0 10px rgba(255,255,255,0.3);
-}
-
-/* Submit Button */
-.login input[type="submit"] {
-  margin-top: 15px;
-  padding: 12px 0;
-  background: #4da6ff;  
+ /* Submit Button */
+.login button[type="submit"] {
+  margin-top: 10px;
+  padding: 12px;
   border: none;
-  border-radius: 25px;
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
   cursor: pointer;
-  transition: 0.3s ease;
-}
 
-.login input[type="submit"]:hover {
-  background: #3399ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  transition: all 0.3s ease;
+}
+.login button[type="submit"]:hover {
+  background: rgba(255, 255, 255, 0.35);
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+ .submit-load {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid #ffffff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: auto;
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 /* Error message */
 .login p {
   text-align: center;

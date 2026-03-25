@@ -18,11 +18,16 @@ const Navbar = () => {
     const navigate = useNavigate();
     const [book, setbook] = useState(false);
     useEffect(() => {
-        const User = localStorage.getItem("Name");
-        if (User) {
+    const User = localStorage.getItem("Name");
+
+    if (User) {
+        try {
             setusername(JSON.parse(User));
+        } catch {
+            setusername(User);  
         }
-    }, [])
+    }
+}, []);
     const Logout = async () => {
         try {
             const response2 = await axios.post('/api/logout');
@@ -42,6 +47,7 @@ const Navbar = () => {
                 city:city,
                }
                console.log(CityADD);
+               resolve();
                
             }, 3000);
         })
@@ -57,7 +63,7 @@ const Navbar = () => {
                     {username ? (
                         <div className='userlogin' onMouseEnter={() => { setuserhover(true) }} onMouseLeave={() => { setuserhover(false) }}>
                             <img src="/user (3).png" alt="" />
-                            <span>{username}</span>
+                             {/* <p>{username}</p> */}
                             {userhover && (
                                 <div className='userlog'>
                                     <p> Orders</p>
