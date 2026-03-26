@@ -1,20 +1,32 @@
 const AppointmentConfirm = require('../Models/Appointment');
-const User=require('../Models/UserModel');
-const Payment=  async (req, res) => {
+const User = require('../Models/UserModel');
+const Doctor = require('../Models/DoctorModel');
+const Payment = async (req, res) => {
     try {
         const userId = req.user.id;
-        const { PaymentMethod, Debit_Card, UPI_ID, DebitCard_Password, Paid, Appoint_Date,
-           
-            DoctorName,
+        const { PaymentMethod,
+            Username,
+            Paid,
+            Appoint_Date,
+            Mobile,
+            UPI_ID,
+            DebitCard_Password,
+            Debit_Card,
             Department,
-            image, time } = req.body;
+            id } = req.body;
 
-            const UserVerify=await User.findOne({_id:userId});
-            if(!UserVerify){
-                return res.status(500).json({
-                    message:"something went wrong"
-                })
-            }
+        const UserVerify = await User.findOne({ _id: userId });
+        if (!UserVerify) {
+            return res.status(500).json({
+                message: "something went wrong"
+            })
+        }
+        const DoctorrVerify = await Doctor.findOne({ _id: id });
+        if (!DoctorrVerify) {
+            return res.status(500).json({
+                message: "something went wrong"
+            })
+        }
         let Payment_Process;
         if (PaymentMethod === 'UPI') {
             if (!(/^[a-zA-Z0-9._-]{2,256}@[a-zA-Z]{2,64}$/.test(UPI_ID))) {
@@ -22,14 +34,14 @@ const Payment=  async (req, res) => {
                     message: "Invalid UPI ID"
                 })
             }
-            // Name, Email, PhoneNumber, Password, Address, ConfirmPassword
+
             Payment_Process = new AppointmentConfirm({
                 PaymentMethod, UserID: userId, Username, Paid, Appoint_Date,
                 Mobile,
-                DoctorName,
+                DoctorName: DoctorrVerify.name,
                 Department,
-                image,
-                time
+                image: DoctorrVerify.photo,
+                time: DoctorrVerify.timing
             })
 
         }
@@ -48,13 +60,11 @@ const Payment=  async (req, res) => {
             Payment_Process = new AppointmentConfirm({
                 PaymentMethod, UserID: userId, Username, Paid, Appoint_Date,
                 Mobile,
-                DoctorName,
+                DoctorName: DoctorrVerify.name,
                 Department,
-                image,
-                time
+                image: DoctorrVerify.photo,
+                time: DoctorrVerify.timing
             });
-
-
         }
         await Payment_Process.save();
         res.status(200).json({
@@ -69,7 +79,7 @@ const Payment=  async (req, res) => {
         })
     }
 }
-router.get('/appointmentdetails', verifyAuth, async (req, res) => {
+const Appointments=async (req, res) => {
     try {
         const userId = req.user.id;
 
@@ -87,14 +97,13 @@ router.get('/appointmentdetails', verifyAuth, async (req, res) => {
             message: error.message
         })
     }
-})
-router.delete('/cancelappointment', verifyAuth, async (req, res) => {
+}
+const CancelAppointment= async (req, res) => {
     try {
         const userId = req.user.id;
-        const {appointmentId}=req.body;
+        const { appointmentId } = req.body;
         const Cancel = await AppointmentConfirm.findOneAndDelete({
             _id: appointmentId,
-            UserID:userId
         })
         res.status(200).json({
             success: true,
@@ -104,5 +113,5 @@ router.delete('/cancelappointment', verifyAuth, async (req, res) => {
     } catch (error) {
 
     }
-})
-module.exports = router
+}
+module.exports = {Appointments,Payment,CancelAppointment}

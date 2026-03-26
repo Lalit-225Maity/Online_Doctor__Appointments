@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+ import Helmet from 'react-helmet'
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
@@ -46,6 +47,10 @@ const Login = () => {
 
   return (
     <div className='login'>
+    <Helmet>
+      <title>Login</title>
+      <meta name="description" content="This is Login Page Please Login" />
+    </Helmet>
       {userLogin && (
         <div className="login-toast">
           <div className="toast-header">

@@ -3,6 +3,7 @@ import { Typewriter } from 'react-simple-typewriter'
 import './Home.css'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import { Helmet } from 'react-helmet'
 import { useNavigate } from 'react-router-dom'
 import HealthAdvise from './HealthAdvise/HealthAdvise'
 import Question from './Question/Question'
@@ -39,6 +40,9 @@ const Home = () => {
     }
     return (
         <div className='home' onClick={(e) => { settick(false) }} >
+        <Helmet>
+            <title>Home</title>
+        </Helmet>
             <div className="search-box">
                 <div className="typewriter">
                     <Typewriter

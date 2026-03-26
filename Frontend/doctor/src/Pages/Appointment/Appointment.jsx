@@ -11,14 +11,7 @@ const Appointment = () => {
   const [em, setem] = useState();
   const [startdate, setstartdate] = useState();
   const { state } = useLocation();
-  const { doctorDetails, department,image } = state || {};
-  useEffect(() => {
-    const Name=localStorage.getItem("Name");
-    if(Name){
-      setem(JSON.parse(Name));
-    }
-  }, [])
-  
+  const { doctorDetails, department,image,id } = state || {};
   const daymap = {
     Sunday: 0,
     Monday: 1,
@@ -79,14 +72,9 @@ const Appointment = () => {
             />
           </div>
         </div>
-        <button  className='button' onClick={() => {if(em){navigate('/personalinfo',{state:{appointmentDate:startdate,price:1200,department:department,doctorDetails:doctorDetails,image:image,time:doctorDetails.timing}})}
-        else{
-          navigate('/login')
-        }
-        }}>Next</button>
+        <button  className='button' onClick={() => {navigate('/personalinfo',{state:{appointmentDate:startdate,price:1200,department:department,doctorDetails:doctorDetails,image:image,time:doctorDetails.timing,id}})}}>Next</button>
       </div>
-    
-      
+
 
     </div>
   )

@@ -164,32 +164,87 @@ input:focus {
 
 
 
+  
+
+.patient-address {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    margin-bottom: 30px;
+}
+
+ 
 .patient-address span {
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
-.patient-address span > span {
-    position: absolute;
-    top: 65px;
-    left: 0;
-    width: 100%;
-    background: #ffffff;
-    border: 1px solid #ddd;
-    max-height: 180px;
-    overflow-y: auto;
-    z-index: 5;
-}
-
-.patient-address span > span p {
-    padding: 8px 10px;
-    cursor: pointer;
+ 
+.patient-address label {
     font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
 }
 
-.patient-address span > span p:hover {
-    background-color: #f1f1f1;
+ 
+.patient-address input {
+    padding: 11px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s;
+    background: #fff;
 }
 
+ 
+.patient-address input:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgba(25,118,210,0.12);
+}
+
+ 
+
+.patient-address span span {
+    position: absolute;
+    top: 68px;
+    left: 0;
+    right: 0;
+    max-height: 240px;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    z-index: 10;
+    padding: 5px 0;
+}
+
+ 
+.patient-address span span p {
+    padding: 10px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+ 
+.patient-address span span p:hover {
+    background: #1976d2;
+    color: #fff;
+}
+
+ 
+ 
+
+.patient-address p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+ 
  
 
 input[type="submit"] {
@@ -204,8 +259,41 @@ input[type="submit"] {
     margin-top: 10px;
     transition: 0.2s;
 }
-
-input[type="submit"]:hover {
-    background-color: #125aa0;
+.patient-contact-number span {
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
+ 
+.patient-contact-number label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+}
+
+
+.patient-contact-number input {
+    padding: 11px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+    transition: 0.25s;
+    background: #fff;
+}
+
+ 
+.patient-contact-number input:focus {
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgba(25,118,210,0.12);
+}
+
+ 
+.patient-contact-number p {
+    font-size: 12px;
+    margin-top: 5px;
+    color: red;
+}
+ 
  

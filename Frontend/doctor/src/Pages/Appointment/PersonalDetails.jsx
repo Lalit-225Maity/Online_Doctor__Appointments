@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useLocation } from 'react-router-dom';
 const PersonalDetails = () => {
     const{state}=useLocation();
-    const{appointmentDate,price,department,doctorDetails,image,time}=state||{};
+    const{appointmentDate,price,department,doctorDetails,image,time,id}=state||{};
     const navigate=useNavigate();
     const [choosedate, setchoosedate] = useState();
     const [State, setState] = useState(false)
@@ -24,13 +24,13 @@ const PersonalDetails = () => {
             setTimeout(() => {
                 
                 resolve("success");
-                navigate('/confirm',{state:{appointment:data,appointmentDate:appointmentDate,Price:price,department:department,doctorDetails:doctorDetails,image:image,time:time}})
+                navigate('/confirm',{state:{appointment:data,appointmentDate:appointmentDate,Price:price,department:department,doctorDetails:doctorDetails,image:image,time:time,id}})
 
             }, 3000);
         })
     }
     return (
-        <div className='personalinfo'>
+        <div className='personalinfo' onClick={()=>{setState(false)}}>
             <img src="https://www.peerlesshospital.com/images/appointment-banner.webp" alt="Error" />
             <div className="doc-appoiont-schedules">
                 <div className="schedule-appointment">
@@ -97,7 +97,8 @@ const PersonalDetails = () => {
                 <div className="patient-address">
                     <span>
                         <label>State</label>
-                        <input type="text" {...register("state",{required:{value:true,message:"select state"}})} onClick={() => {
+                        <input type="text" {...register("state",{required:{value:true,message:"select state"}})} onClick={(e) => {
+                            e.stopPropagation();
                             setState(true)
                         }} />
                          {errors.state&&<p style={{color:"red"}}>{errors.state.message}</p>}

@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 const Confirmation = () => {
     const { state } = useLocation();
-    const { appointment, appointmentDate, Price, department, doctorDetails,image,time } = state || {};
+    const { appointment, appointmentDate, Price, department, doctorDetails,image,time,id } = state || {};
     const navigate = useNavigate();
     return (
         <div className='confirm'>
@@ -58,7 +58,7 @@ const Confirmation = () => {
                         day: "2-digit",
                         month: "long",
                         year: "numeric",
-                    }),email:appointment.Patient_Email_ID,image:image,time:time}})}}>Confirm and Pay</button>
+                    }),email:appointment.Patient_Email_ID,image:image,time:time,id}})}}>Confirm and Pay</button>
         </div>
     )
 }

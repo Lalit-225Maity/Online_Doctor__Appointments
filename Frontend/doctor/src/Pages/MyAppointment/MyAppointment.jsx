@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import './Myappointment.css'
+import { Helmet } from 'react-helmet'
 const MyAppointment = () => {
     const [booking, setbooking] = useState([]);
+    const[cancel,setcancel]=useState(false);
     const Cancel = async (ID) => {
 
 
@@ -12,6 +14,11 @@ const MyAppointment = () => {
 
             })
             console.log(response2.data.Cancel);
+            setcancel(true);
+            setTimeout(() => {
+                 setcancel(false);
+                 window.location.reload();
+            }, 3000);
 
         } catch (error) {
 
@@ -34,33 +41,72 @@ const MyAppointment = () => {
                 console.log(error.response.data.message);
 
             }
-        })()
+        })();
+        
     }, [])
 
     return (
         <div className='myappointment'>
+        <Helmet>
+            <title>My Appointments | User Appointments</title>
+        </Helmet>
             <h4>My Appointments</h4>
+
             {booking.map((i) => (
-                <div className="myappointment-details">
-                    <div className="doctor-image">
-                        <img src={i.image} alt="" />
+
+
+                <div className="appointment-card" >
+
+
+                    <div className="appointment-doctor-image">
+                        <img src={i.image} alt="Doctor" />
                     </div>
-                    <div className="user-appoint-details">
-                        <h4>Thank you for your appointment</h4>
-                        <p> Hi {i.Username},
-                            Just to let you know your appointment is confirmed, and we look forward to seeing you</p>
-                        <h5>{i.DoctorName}</h5>
+
+                    <div className="appointment-details-info">
+
+
+
+                        <p className="confirm-msg">
+                            Thank you for booking your appointment. We look forward to seeing you soon.
+                        </p>
+
+
+                        <h5 className="doctor-name">{i.DoctorName}</h5>
+
+                        <p>Patient Name: {i.Username}</p>
+
+                        <p>Appointment Date : {i.Appoint_Date}</p>
+
                         <p>Symptoms : {i.Department}</p>
-                        <div className="appoint-time-date">
-                            <p>Appointment Date : {i.Appoint_Date}</p>|<p>Time Slot : {i.time}</p>
+
+                        <p>Appointment Time : {i.time}</p>
+
+                        <div className="cancel-status">
+                            <p className="status">
+                                Status: {i.Paid}
+                            </p>
+
+
+                            <button
+                                className="cancel-btn"
+                                onClick={() => Cancel(i._id)}
+                            >
+                                Cancel Appointment
+                            </button>
+
                         </div>
-                        <p>Booking Status : {i.Paid}</p>
-                        <button onClick={() => { Cancel(i._id) }} style={{ backgroundColor: "red" }}>Cancel</button>
                     </div>
 
                 </div>
 
             ))}
+            {cancel&&(
+                <div className="cancel-loading">
+                    <div className="spin-load"></div>
+                    <p>Please wait....</p>
+                </div>
+            )}
+
         </div>
     )
 }

@@ -17,7 +17,7 @@ const Payment = () => {
         formState: { isSubmitting }
     } = useForm();
     const { state } = useLocation();
-    const { PatientName, Mobile, DoctorName, Department, Price, Appoint_Date, email,image,time } = state || {};
+    const { PatientName, Mobile,  Department, Price, Appoint_Date, email, id } = state || {};
     const [UPI, setUPI] = useState(false);
     const [expairy, setexpairy] = useState();
     const [card, setcard] = useState(false);
@@ -32,33 +32,28 @@ const Payment = () => {
                         ...data,
                         PaymentMethod: method,
                         Username: PatientName,
-                        UserID: email,
                         Paid: "Confirm",
                         Appoint_Date: Appoint_Date,
                         Mobile: Mobile,
-                        DoctorName: DoctorName,
-                        Department: Department,
-                        image:image,
-                        time:time
+                        Department,
+                        id:id
 
                     }
                     const CardData = {
                         ...data,
                         PaymentMethod: method,
-                        UserName: PatientName,
-                        UserID: email,
+                        Username: PatientName,
                         Paid: "Confirm",
                         Appoint_Date: Appoint_Date,
                         Mobile: Mobile,
-                        DoctorName: DoctorName,
-                        Department: Department,
-                        image:image,
-                        time:time
+                        Department,
+                        
+                        id:id
                     }
                     if (method === 'UPI') {
                         const response = await axios.post('/api/pay', newData);
                         console.log(response.data);
-                        localStorage.setItem("Email_ID", JSON.stringify(email))
+                         
                         if (response.data.success) {
                             navigate('/myappointment')
                         }
@@ -68,18 +63,17 @@ const Payment = () => {
                     if (method === 'Debit Card') {
                         const response = await axios.post('/api/pay', CardData);
                         console.log(response.data);
-                        const useremail2 = localStorage.getItem("Email_ID");
-                        if (useremail2) { localStorage.setItem("Email_ID", JSON.stringify(email)) }
-                        localStorage.setItem("Email_ID", JSON.stringify(email))
                         if (response.data.success) {
-                            navigate('/myappointment', { state: { email } })
+                            navigate('/myappointment')
                         }
                         resolve("success");
                     }
                 } catch (error) {
                     const CodeERROR = error.response.data.message;
                     setfault(CodeERROR);
-                    reject(error)
+                 
+                    
+                    reject("error")
                 }
             }, 3000);
         })

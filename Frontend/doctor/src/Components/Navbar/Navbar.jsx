@@ -63,7 +63,7 @@ const Navbar = () => {
                     {username ? (
                         <div className='userlogin' onMouseEnter={() => { setuserhover(true) }} onMouseLeave={() => { setuserhover(false) }}>
                             <img src="/user (3).png" alt="" />
-                             {/* <p>{username}</p> */}
+                            <span>{username}</span>
                             {userhover && (
                                 <div className='userlog'>
                                     <p> Orders</p>
