@@ -1,10 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import './Signup.css'
+import TextField from '@mui/material/TextField'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 const Signup = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -21,10 +22,10 @@ const Signup = () => {
           navigate('/login');
 
         } catch (error) {
-           const err=error.response.data.message;
-           console.log(err);
-           reject("False")
-           
+          const err = error.response.data.message;
+          console.log(err);
+          reject("False")
+
 
         }
       }, 3000);
@@ -36,20 +37,16 @@ const Signup = () => {
       <div className="user-form">
         <h3>Join Lybrate</h3>
         <form onSubmit={handleSubmit(FormSubmit)}>
-          <label>Full Name</label>
-          <input type="text" placeholder='Full Name' {...register("Name")} />
-          <label>Email</label>
-          <input type="email" placeholder='Email' {...register("Email")} />
-          <label>Mobile No.</label>
-          <input type="tel" placeholder='Mobile No.' {...register("PhoneNumber")} />
-           <label>Address</label>
-          <input type="text" placeholder='Address' {...register("Address")} />
-          <label>Create password</label>
-          <input type="password" placeholder='Password'  {...register("Password")} />
-          <label>Retype Password</label>
-          <input type="password" placeholder='retype password' {...register("ConfirmPassword")} />
-          
-          <input type="submit" value={isSubmitting ? "creating account....." : "Create account"} />
+          <TextField type="text" placeholder='Full Name' {...register("Name")} variant="outlined" label="Full Name" />
+          <TextField type="email" placeholder='Email' {...register("Email")} variant="outlined" label="Email" />
+          <TextField type="tel" placeholder='Mobile No.' {...register("PhoneNumber")} label="Mobile No." variant="outlined" />
+          <TextField type="text" placeholder='Address' {...register("Address")} label="Address" variant="outlined" />
+          <TextField type="password" placeholder='Password'  {...register("Password")} label="Create password" variant="outlined" autoComplete='off'/>
+          <TextField type="password" placeholder='retype password' {...register("ConfirmPassword")} variant="outlined" label="Retype Password" autoComplete='off' />
+          <button type="submit">{isSubmitting?(
+            <div className="account-creates"></div>
+          ):("create account")}</button>
+         
         </form>
       </div>
     </div>

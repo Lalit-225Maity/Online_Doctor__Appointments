@@ -5,6 +5,11 @@ const Appointment = new Schema({
         ref:"User",
         required:true
     },
+    doctorID:{
+        type:Schema.Types.ObjectId,
+        ref:"Doctor",
+        required:true,
+    },
     Username: {
         type: String
     },

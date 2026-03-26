@@ -11,13 +11,11 @@ const Users=new Schema({
     Password:{
          required:true,
          type:String,
-         match:[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/,"Password must be 8+ characters and include uppercase, lowercase, number and special character"]
+ 
     },
     PhoneNumber:{
         required:true,
-        type:String,
-        match:[/^(?:\+91|91)?[6-9]\d{9}$/,
-            "Please enter a valid Indian mobile number"]
+        type:String
     },
     Address:{
         type:String
