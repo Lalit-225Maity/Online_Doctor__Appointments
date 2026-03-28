@@ -13,6 +13,7 @@
 .nav-one {
     height: 80px;
     padding: 0 60px;
+    background-color: #fff;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -92,27 +93,29 @@
     color: #00bcd4;
 }
 
-.nav-components button {
-    padding: 10px 20px;
-    background: #00bcd4;
-    border: none;
-    border-radius: 25px;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    transition: 0.3s;
+ .nav-components button {
+  padding: 10px 22px;
+  background: #e0f7fa;
+  border: none;
+  border-radius: 10px;
+  color: #00838f;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.nav-components button:hover {
+  background: #006064;
+  color: #fff;
+  transform: translateY(-2px);
 }
 
 .nav-components a.red button {
-    background: #F8843F;
+    background: #006064;
     color: #ffff;
 }
 
-
-.nav-components button:hover {
-    background: #0097a7;
-    transform: translateY(-2px);
-}
+ 
 
 .nav-components .red {
     color: #F8843F;

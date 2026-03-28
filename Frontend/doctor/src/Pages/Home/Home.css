@@ -109,11 +109,11 @@
 .search-desease {
     position: absolute;
     top: 100%;
-    width: 59%;
-    left: 5%;
+    width: 59.3%;
+    left: 4.9%;
     margin-left: 10%;
     background-color: #fff;
-    border-radius: 5px;
+    border-radius: 0px 5px 5px 5px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     text-align: left;
     max-height: 250px;
@@ -125,7 +125,7 @@
 
 
 
-/* Suggestion Items */
+ 
 .search-desease p {
     padding: 12px 15px;
     border-bottom: 1px solid #f1f1f1;

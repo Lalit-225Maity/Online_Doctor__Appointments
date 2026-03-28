@@ -1,25 +1,31 @@
 import React from 'react'
 import './Confirmation.css'
 import { useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 const Confirmation = () => {
     const { state } = useLocation();
-    const { appointment, appointmentDate, Price, department, doctorDetails,image,time,id } = state || {};
+    const { appointment, appointmentDate, Price, department, doctorDetails,image,time,id,stp } = state || {};
     const navigate = useNavigate();
+    useEffect(() => {
+       console.log(stp);
+       
+    }, [])
+    
     return (
         <div className='confirm'>
 
-            <div className="doc-appoiont-confirm">
+            <div className={`doc-appoiont-confirm-${stp}`}>
                 <div className="schedule-appointment">
-                    <div className="circle-1">1</div>
+                    <div className="circle-1">{stp>=1?"✓":1}</div>
                     <p>Schedule Appointment</p>
                 </div>
                 <div className="patient">
-                    <div className="circle-2">2</div>
+                    <div className="circle-2">{stp>=2?"✓":2}</div>
                     <p>Patient Details</p>
                 </div>
                 <div className="confirmation">
-                    <div className="circle-3">3</div>
+                    <div className="circle-3">{stp>=2?"✓":2}</div>
                     <p>Confirmation</p>
                 </div>
             </div>

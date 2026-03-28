@@ -12,6 +12,7 @@ const Appointment = () => {
   const [startdate, setstartdate] = useState();
   const { state } = useLocation();
   const { doctorDetails, department,image,id } = state || {};
+  const [stp, setstp] = useState(1);
   const daymap = {
     Sunday: 0,
     Monday: 1,
@@ -72,7 +73,7 @@ const Appointment = () => {
             />
           </div>
         </div>
-        <button  className='button' onClick={() => {navigate('/personalinfo',{state:{appointmentDate:startdate,price:1200,department:department,doctorDetails:doctorDetails,image:image,time:doctorDetails.timing,id}})}}>Next</button>
+        <button  className='button' onClick={() => {navigate('/personalinfo',{state:{appointmentDate:startdate,price:1200,department:department,doctorDetails:doctorDetails,image:image,time:doctorDetails.timing,id,stp}})}}>Next</button>
       </div>
 
 

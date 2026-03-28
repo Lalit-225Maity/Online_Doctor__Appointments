@@ -2,7 +2,7 @@
     margin-top: 170px;
   
 }
-.doc-appoiont-schedules {
+.doc-appoiont-schedules-1 {
     width: 80%;
     margin: 40px auto;
     display: flex;
@@ -11,20 +11,27 @@
     position: relative;
  }
 
- .doc-appoiont-schedules::before {
+ .doc-appoiont-schedules-1::after {
     content: '';
     position: absolute;
     top: 25px;
     left: 0;
-    right: 0;
-     
     height: 4px;
-    background-color: #e0e0e0;
+    background-color: #FF5B5B;
     z-index: 1;
-  
+    width: 52%;   
 }
-
-.doc-appoiont-schedules .circle-1,.doc-appoiont-schedules .circle-2,.doc-appoiont-schedules .circle-3 {
+.doc-appoiont-schedules-1::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 100%;              /* full line */
+    height: 4px;
+    background-color: #e0e0e0; /* gray background */
+    z-index: 0;               /* behind progress */
+}
+.doc-appoiont-schedules-1 .circle-1,.doc-appoiont-schedules-1 .circle-2,.doc-appoiont-schedules-1 .circle-3 {
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -39,7 +46,7 @@
     z-index: 2;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-.doc-appoiont-schedules .circle-2{
+.doc-appoiont-schedules-1 .circle-2{
     background-color:#FF5B5B;
     color: #FFCE99;
 }

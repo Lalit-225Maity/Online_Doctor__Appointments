@@ -96,3 +96,35 @@
     color: #555;
     line-height: 1.6;
 }
+@media (max-width: 768px) {
+
+    .question-ans {
+        padding: 2rem 4vw;
+        justify-content: center;
+    }
+
+    .question-doctors {
+        width: 100%;
+    }
+
+    .questions-doc-ans {
+        gap: 0.8rem;
+    }
+
+    .doctor-suggestions {
+        flex: 1 1 100%;
+        padding: 1rem;
+    }
+
+    .doctor-suggestions h5 {
+        font-size: 0.9rem;
+    }
+
+    .doc-name-exp-dept {
+        gap: 0.6rem;
+    }
+
+    .doc-suggest > p {
+        font-size: 0.8rem;
+    }
+}

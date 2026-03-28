@@ -7,18 +7,14 @@
 
 .my-surgery-img {
     width: 70%;
-    display: flex;
-      
+    display: flex;  
     flex-direction: column;
-
 }
 .my-surgery-img span img {
     width: 100px;
 }
-
 .my-surgery-img span {
     display: flex;
- 
     flex-direction: row;
     justify-content: space-between;
 }

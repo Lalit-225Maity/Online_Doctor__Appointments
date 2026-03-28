@@ -32,7 +32,16 @@
     background-color: #e0e0e0;
     z-index: 1;
 }
-
+ .doc-appoiont-schedule::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 0;
+    height: 4px;
+    background-color: #FF5B5B;
+    z-index: 1;
+    width: 8%;   
+}
 .doc-appoiont-schedule .circle-1,
 .doc-appoiont-schedule .circle-2,
 .doc-appoiont-schedule .circle-3 {

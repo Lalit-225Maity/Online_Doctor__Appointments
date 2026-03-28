@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useLocation } from 'react-router-dom';
 const PersonalDetails = () => {
     const{state}=useLocation();
-    const{appointmentDate,price,department,doctorDetails,image,time,id}=state||{};
+    const{appointmentDate,price,department,doctorDetails,image,time,id,stp}=state||{};
     const navigate=useNavigate();
     const [choosedate, setchoosedate] = useState();
     const [State, setState] = useState(false)
@@ -24,7 +24,7 @@ const PersonalDetails = () => {
             setTimeout(() => {
                 
                 resolve("success");
-                navigate('/confirm',{state:{appointment:data,appointmentDate:appointmentDate,Price:price,department:department,doctorDetails:doctorDetails,image:image,time:time,id}})
+                navigate('/confirm',{state:{appointment:data,appointmentDate:appointmentDate,Price:price,department:department,doctorDetails:doctorDetails,image:image,time:time,id,stp:stp+1}})
 
             }, 3000);
         })
@@ -32,9 +32,9 @@ const PersonalDetails = () => {
     return (
         <div className='personalinfo' onClick={()=>{setState(false)}}>
             <img src="https://www.peerlesshospital.com/images/appointment-banner.webp" alt="Error" />
-            <div className="doc-appoiont-schedules">
+            <div className={`doc-appoiont-schedules-${stp}`}>
                 <div className="schedule-appointment">
-                    <div className="circle-1">1</div>
+                    <div className="circle-1">{stp==1?"✓":1}</div>
                     <p>Schedule Appointment</p>
                 </div>
                 <div className="patient">

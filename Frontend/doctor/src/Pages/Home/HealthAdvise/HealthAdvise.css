@@ -115,3 +115,76 @@
         transform: translateY(0);
     }
 }
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  /* MAIN CONTAINER */
+  .healthadvise {
+    width: 100%;
+    display: flex;
+    flex-direction: column;              /* horizontal scroll */
+    overflow-x: auto;                 /* FIX overflow */
+    gap: 3vw;
+    padding: 1vh 3vw;
+    
+    scrollbar-width: none;
+  }
+
+   
+
+   
+  .Diet-Food-Fitness,
+  .Skin-Hair,
+  .Health-Conditions,
+  .Pregnancy-Kids-Parenting,
+  .Women-Health {
+    flex: 0 0 auto;                  /* prevent shrink */
+    min-width: max-content;
+    padding: 0.6rem 0.8rem;
+    gap: 0.4rem;
+  }
+
+  /* TEXT */
+  .healthadvise p {
+    font-size: 0.75rem;
+    white-space: nowrap;             /* prevent breaking */
+  }
+
+ 
+  .healthadvise img {
+    width: 1rem;
+  }
+
+ 
+  .fitness,
+  .skin,
+  .health,
+  .kids,
+  .women {
+    position: fixed;                 /* VERY IMPORTANT */
+    top: 22vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90vw;                     /* responsive width */
+    max-width: 22rem;
+    max-height: 60vh;
+
+    overflow-y: auto;
+    z-index: 3000;
+
+    border-radius: 0.6rem;
+    padding: 0.5rem 0;
+  }
+
+  /* DROPDOWN ITEMS */
+  .fitness p,
+  .skin p,
+  .health p,
+  .kids p,
+  .women p {
+    font-size: 0.8rem;
+    padding: 0.6rem 1rem;
+  }
+
+}
