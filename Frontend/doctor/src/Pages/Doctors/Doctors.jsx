@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import './Doctors.css'
 import { useNavigate } from 'react-router-dom'
-const Doctors = () => {
+const Doctors = ({setisBook}) => {
     const navigate = useNavigate();
     const { state } = useLocation();
     const { doc,department } = state || {};
@@ -24,7 +24,7 @@ const Doctors = () => {
                             </div>
                             <div className="contact-info">  <p>Contact Info : {i.phone}</p> <button className='call'><img src="/phone.png" alt="" />CALL</button></div>
                             <div className="appoint-doc">
-                                <button onClick={() => { navigate('/appointment',{state:{doctorDetails:i,department:department,image:i.photo,id:i._id}}) }}>Book Appointment</button>
+                                <button onClick={() => { navigate('/appointment',{state:{doctorDetails:i,department:department,image:i.photo,id:i._id}});setisBook(true) }}>Book Appointment</button>
                                 <button>Review</button>
                             </div>
                         </div>

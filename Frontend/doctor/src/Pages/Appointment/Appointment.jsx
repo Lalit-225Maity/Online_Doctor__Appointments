@@ -3,16 +3,14 @@ import './Appointment.css'
 import { useLocation } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
- 
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-const Appointment = () => {
-  const navigate=useNavigate();
-  const [em, setem] = useState();
+
+const Appointment = ({ setisAllowed }) => {
+  const navigate = useNavigate();
   const [startdate, setstartdate] = useState();
   const { state } = useLocation();
-  const { doctorDetails, department,image,id } = state || {};
-  const [stp, setstp] = useState(1);
+  const { doctorDetails, department, image, id } = state || {};
+  const stp = 1;
   const daymap = {
     Sunday: 0,
     Monday: 1,
@@ -68,12 +66,20 @@ const Appointment = () => {
               filterDate={(date) => { return date.getDay() === daymap[doctorDetails.day] }}
               onChange={(date) => { setstartdate(date) }}
               dateFormat="dd/MM/yyyy"
+              required="true"
               minDate={new Date()}
               placeholderText='Select the Date'
             />
           </div>
         </div>
-        <button  className='button' onClick={() => {navigate('/personalinfo',{state:{appointmentDate:startdate,price:1200,department:department,doctorDetails:doctorDetails,image:image,time:doctorDetails.timing,id,stp}})}}>Next</button>
+        <button className='button' onClick={() => {
+            if (startdate) {
+            setisAllowed(true);
+             navigate('/personalinfo', { state: { appointmentDate: startdate, price: 1200, department: department, doctorDetails: doctorDetails, image: image, time: doctorDetails.timing, id, stp } });
+          }
+          
+         
+        }}>Next</button>
       </div>
 
 

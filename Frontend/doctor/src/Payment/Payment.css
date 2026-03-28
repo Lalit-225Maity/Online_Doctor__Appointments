@@ -1,18 +1,20 @@
  .payment {
-     margin-top: 170px;
+   
      width: 100%;
      display: flex;
-     min-height: 70vh;
+     min-height: 100vh;
      align-items: center;
+       
      justify-content: center;
 
  }
 
  .select-payment {
+      margin-top: 170px;
      display: flex;
      height: 70vh;
-     width: 800px;
-     
+     width: 900px;
+      
      background-color: #ffffff;
      border-radius: 12px;
      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -75,7 +77,7 @@
      transform: scale(1.03);
  }
 
- /* RIGHT SIDE - PAYMENT FORM */
+  
  .payments {
      width: 80%;
      padding: 30px;
@@ -106,8 +108,8 @@
 
      color: #333;
  }
- 
-  
+
+
  .upi button[type="submit"] {
      width: 100%;
      padding: 12px;
@@ -119,14 +121,46 @@
      cursor: pointer;
      transition: 0.3s ease;
  }
+.no-pay-select {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;  
+    text-align: center;
+    gap: 20px;
+    background-color: #f8f9fa; 
+    border-radius: 12px;
+    padding: 30px;
+    border: 1px dashed #ccc;
+    margin: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.no-pay-select img {
+    width: 100px;  
+    max-width: 30%; 
+    height: auto;
+}
+
+.no-pay-select h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
 
  .upi button[type="submit"]:hover {
      background-color: #0056b3;
  }
- .upi form{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+ .upi button[type="submit"]:disabled{
+    cursor: not-allowed;
+ }
+
+ .upi form {
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
  }
 
  .makepayment {
@@ -166,7 +200,32 @@
      }
  }
 
+ .checkbox-area {
+     display: flex;
+     align-items: flex-start;
+     /* IMPORTANT: align from top */
+     width: 100%;
 
+    
+     padding: 10px 0px;
+     gap: 10px;
+     background-color: #f9f9f9;
+ }
+
+ /* Checkbox */
+ .checkbox-area input[type="checkbox"] {
+     margin-top: 3px;
+     /* small adjustment to align with text */
+ }
+
+ /* Label text */
+ .checkbox-area label {
+     font-size: 13px;
+     color: #555;
+     line-height: 1.4;
+     flex: 1;
+     /* takes full width */
+ }
 
  .payment-process-loading {
      width: 60px;
@@ -233,11 +292,11 @@
  }
 
  .exp-cvv {
-     
+
      display: flex;
      gap: 10px;
      align-items: center;
-     
+
  }
 
  .exp-cvv label {
@@ -245,12 +304,12 @@
  }
 
  .exp-cvv .react-datepicker-wrapper {
-    width: 120px;
-}
+     width: 120px;
+ }
 
-.exp-cvv .react-datepicker__input-container input {
-    width: 100%;
-}
+ .exp-cvv .react-datepicker__input-container input {
+     width: 100%;
+ }
 
  .cards p {
      font-size: 13px;
@@ -279,8 +338,9 @@
  .cards button[type="submit"]:hover {
      background-color: #0056b3;
  }
-
- /* DatePicker inside cards */
+.cards button[type="submit"]:disabled{
+    cursor:not-allowed;
+}
  .cards .react-datepicker-wrapper {
      width: 100%;
  }

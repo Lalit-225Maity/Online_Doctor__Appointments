@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Pages/Home/Home';
@@ -11,6 +11,7 @@ import { useLocation } from 'react-router-dom';
 import VerifyEmail from './Pages/Admin/ForgotPassword/VerifyEmail';
 import CreateNewpassword from './Pages/Admin/ForgotPassword/CreateNewpassword';
 import ForDoctor from './Pages/ForDoctor/ForDoctor';
+import { Bookroute, ProtectedRoute } from './Components/ProtectRoute/ProtectedRoute';
 import GetApp from './Pages/GetApp/GetApp';
 import ProtectRoute from './Components/ProtectRoute/Protect';
 import Confirmation from './Pages/Appointment/Confirmation/Confirmation';
@@ -20,6 +21,8 @@ import Payment from './Payment/Payment';
 import Footer from './Components/Footer/Footer';
 import Mysurgery from './Components/Navbar/PlanMySurgery/Mysurgery';
 const App = () => {
+  const [isAllowed, setisAllowed] = useState(false);
+  const [isBook, setisBook] = useState(false);
   const location = useLocation();
   return (
     <div>
@@ -29,13 +32,19 @@ const App = () => {
         <Route element={<ProtectRoute />}>
           <Route path='/fordoctor' element={<ForDoctor />} />
           <Route path='/getapp' element={<GetApp />} />
-          <Route path='/personalinfo' element={<PersonalDetails />} />
+          <Route element={<Bookroute isBook={isBook} />}>
+            <Route path='/appointment' element={<Appointment setisAllowed={setisAllowed} />} />
+            <Route element={<ProtectedRoute isAllowed={isAllowed} />}>
+              <Route path='/personalinfo' element={<PersonalDetails />} />
+            </Route>
+          </Route>
+
           <Route path='/confirm' element={<Confirmation />} />
           <Route path='/myappointment' element={<MyAppointment />} />
           <Route path='/payment' element={<Payment />} />
           <Route path='/my-surgery' element={<Mysurgery />} />
-          <Route path='/doctors' element={<Doctors />} />
-          <Route path='/appointment' element={<Appointment />} />
+          <Route path='/doctors' element={<Doctors setisBook={setisBook} />} />
+
           <Route path='/free' element={<FreeAppoint />} />
         </Route>
         <Route path='/verify' element={<VerifyEmail />} />

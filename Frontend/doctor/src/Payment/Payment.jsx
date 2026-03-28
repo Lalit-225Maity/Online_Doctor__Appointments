@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './Payment.css'
 import { useForm } from 'react-hook-form'
 import { useLocation } from 'react-router-dom'
@@ -17,11 +17,13 @@ const Payment = () => {
         formState: { isSubmitting }
     } = useForm();
     const { state } = useLocation();
-    const { PatientName, Mobile,  Department, Price, Appoint_Date, email, id } = state || {};
+    const { PatientName, Mobile, Department, Price, Appoint_Date, email, id } = state || {};
     const [UPI, setUPI] = useState(false);
     const [expairy, setexpairy] = useState();
     const [card, setcard] = useState(false);
     const [method, setmethod] = useState();
+    const [agree, setagree] = useState(false);
+
     const [fault, setfault] = useState();
     const [expyear, setexpyear] = useState();
     const OpenPayment = async (data) => {
@@ -36,7 +38,7 @@ const Payment = () => {
                         Appoint_Date: Appoint_Date,
                         Mobile: Mobile,
                         Department,
-                        id:id
+                        id: id
 
                     }
                     const CardData = {
@@ -47,13 +49,13 @@ const Payment = () => {
                         Appoint_Date: Appoint_Date,
                         Mobile: Mobile,
                         Department,
-                        
-                        id:id
+
+                        id: id
                     }
                     if (method === 'UPI') {
                         const response = await axios.post('/api/pay', newData);
                         console.log(response.data);
-                         
+
                         if (response.data.success) {
                             navigate('/myappointment')
                         }
@@ -71,8 +73,8 @@ const Payment = () => {
                 } catch (error) {
                     const CodeERROR = error.response.data.message;
                     setfault(CodeERROR);
-                 
-                    
+
+
                     reject("error")
                 }
             }, 3000);
@@ -82,19 +84,30 @@ const Payment = () => {
         <div className="payment">
             <div className="select-payment">
                 <div className="pament-methods">
-                    <p>Payment Options for +91 8436789520</p>
+                    <p>Payment Options for +91 {Mobile}</p>
                     <button className={UPI ? "blue" : "pink"} onClick={() => { setUPI(true); setcard(false); setmethod("UPI") }}><img src="/upi.svg" alt="" /><p>Pay by UPI ID</p></button>
                     <button className={card ? "blue" : "pink"} onClick={() => { setUPI(false); setcard(true); setmethod("Debit Card") }}><img src="/credit-card.png" alt="Error" /><p>Card</p></button>
                 </div>
                 <div className="payments">
+                    {!UPI && !card && (
+                        <div className="no-pay-select">
+                             <img src="/online-payment.png" alt="Error" />
+                             <h4>Hi {PatientName}, complete your payment</h4>
+                        </div>
+                    )}
                     {UPI && (
                         <div className="upi">
                             <form onSubmit={handleSubmit(OpenPayment)} autoComplete='off'>
                                 <label>UPI ID</label>
                                 <input type="text" {...register("UPI_ID")} />
-                                <p>I agree with the Privacy Policy by proceeding with this payment</p>
+                                <div className="checkbox-area">
+                                    <input type="checkbox" name="tick" id="agree" onChange={(e) => { setagree(e.target.checked) }} />
+                                    <label htmlFor="agree">
+                                        I agree with the Privacy Policy by proceeding with this payment
+                                    </label>
+                                </div>
                                 <h4>INR {Price}(Total Amount Payable)</h4>
-                                <button type="submit">Make Payment</button>
+                                <button type="submit" disabled={!agree} >Make Payment</button>
                                 {fault && <p style={{ color: "red" }}>{fault}</p>}
                                 {isSubmitting && (
                                     <div className='makepayment'>
@@ -139,9 +152,14 @@ const Payment = () => {
                                 <input type="text" {...register("CVV")} />
                                 <label>Debit Card Password</label>
                                 <input type="password" {...register("DebitCard_Password")} />
-                                <p>I agree with the Privacy Policy by proceeding with this payment</p>
+  <div className="checkbox-area">
+                                    <input type="checkbox" name="tick" id="agree" onChange={(e) => { setagree(e.target.checked) }} />
+                                    <label htmlFor="agree">
+                                        I agree with the Privacy Policy by proceeding with this payment
+                                    </label>
+                                </div>
                                 <h4>INR {Price} (Total Amount Payable)</h4>
-                                <button type="submit">Make Payment</button>
+                                <button type="submit" disabled={!agree}>Make Payment</button>
                                 {fault && <p style={{ color: "red" }}>{fault}</p>}
                                 {isSubmitting && (
                                     <div className='makepayment'>
