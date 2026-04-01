@@ -75,7 +75,11 @@ const MyAppointment = () => {
 
                         <p>Patient Name: {i.Username}</p>
 
-                        <p>Appointment Date : {i.Appoint_Date}</p>
+                        <p>Appointment Date : {new Date(i.Appoint_Date).toLocaleDateString('en-IN',{
+                            month:'short',
+                            day:'2-digit',
+                            year:'numeric'
+                        })}</p>
 
                         <p>Symptoms : {i.Department}</p>
 

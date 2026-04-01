@@ -79,10 +79,12 @@ const Payment = async (req, res) => {
         })
     }
 }
-const Appointments=async (req, res) => {
+const Appointments = async (req, res) => {
     try {
         const userId = req.user.id;
-
+        await AppointmentConfirm.deleteMany({
+            Appoint_Date: { $lte: new Date() }
+        })
         const Fetch = await AppointmentConfirm.find({
             UserID: userId
         });
@@ -98,7 +100,7 @@ const Appointments=async (req, res) => {
         })
     }
 }
-const CancelAppointment= async (req, res) => {
+const CancelAppointment = async (req, res) => {
     try {
         const userId = req.user.id;
         const { appointmentId } = req.body;
@@ -114,4 +116,4 @@ const CancelAppointment= async (req, res) => {
 
     }
 }
-module.exports = {Appointments,Payment,CancelAppointment}
+module.exports = { Appointments, Payment, CancelAppointment }

@@ -16,7 +16,7 @@ const Appointment = new Schema({
 
     },
     Appoint_Date: {
-        type: String
+        type: Date
     },
     Mobile: {
         type: String
