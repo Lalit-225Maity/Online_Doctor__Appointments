@@ -4,7 +4,7 @@ const API = require('../API/Api');
 const Doctormodel = require('../Models/DoctorModel');
 router.post('/createdoctor', async (req, res) => {
     try {
-        
+
         const DOCTOR = await Doctormodel.insertMany(API);
         res.status(200).json({
             message: "data is inserted",
@@ -27,7 +27,7 @@ router.get('/fethdoctor', async (req, res) => {
             })
         }
         const DISEASE = await Doctormodel.find({
-            treats: { $in: keyword }
+            treats: { $regex: keyword, $options: "i" }
         })
         res.status(200).json({
             message: "success",
