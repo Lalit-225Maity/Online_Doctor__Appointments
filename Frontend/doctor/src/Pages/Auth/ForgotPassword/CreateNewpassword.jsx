@@ -46,12 +46,16 @@ const CreateNewpassword = () => {
           type="password"
           className='passwordnew'
           {...register("newPassword")}
+          size='small'
+          color="dark"
         />
         <TextField label="Retype New Password"
           {...register("ConfirmPassword")}
           variant="outlined"
+          color="dark"
           className='conpassword'
           type="password"
+          size='small'
         />
         <button type="submit">{isSubmitting ? (
           <span className="passload">

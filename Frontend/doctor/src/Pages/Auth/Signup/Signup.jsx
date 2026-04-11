@@ -37,12 +37,12 @@ const Signup = () => {
       <div className="user-form">
         <h3>Join Lybrate</h3>
         <form onSubmit={handleSubmit(FormSubmit)}>
-          <TextField type="text" placeholder='Full Name' {...register("Name")} variant="outlined" label="Full Name" />
-          <TextField type="email" placeholder='Email' {...register("Email")} variant="outlined" label="Email" />
-          <TextField type="tel" placeholder='Mobile No.' {...register("PhoneNumber")} label="Mobile No." variant="outlined" />
-          <TextField type="text" placeholder='Address' {...register("Address")} label="Address" variant="outlined" />
-          <TextField type="password" placeholder='Password'  {...register("Password")} label="Create password" variant="outlined" autoComplete='off'/>
-          <TextField type="password" placeholder='retype password' {...register("ConfirmPassword")} variant="outlined" label="Retype Password" autoComplete='off' />
+          <TextField type="text" placeholder='Full Name' {...register("Name")} variant="outlined" label="Full Name" size='small' color='dark'/>
+          <TextField type="email" placeholder='Email' {...register("Email")} variant="outlined" label="Email" size='small' color='dark'/>
+          <TextField type="tel" placeholder='Mobile No.' {...register("PhoneNumber")} label="Mobile No." variant="outlined" size='small' color='dark' />
+          <TextField type="text" placeholder='Address' {...register("Address")} label="Address" variant="outlined" size='small' color='dark'/>
+          <TextField type="password" placeholder='Password'  {...register("Password")} label="Create password" variant="outlined" autoComplete='off' size='small' color='dark'/>
+          <TextField type="password" placeholder='retype password' {...register("ConfirmPassword")} variant="outlined" label="Retype Password" autoComplete='off'size='small' color='dark'/>
           <button type="submit">{isSubmitting?(
             <div className="account-creates"></div>
           ):("create account")}</button>

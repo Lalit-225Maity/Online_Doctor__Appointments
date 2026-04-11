@@ -63,8 +63,8 @@ const Login = () => {
       )}
       <h4>Login</h4>
       <form onSubmit={handleSubmit(Mysubmit)}>
-        <TextField label="Email" type="email" placeholder='Email'{...register('Email')} variant="outlined"  autoComplete='off' />
-         <TextField label="Password" type='password' placeholder='Password' {...register('Password')}  variant="outlined" className='textfield-pass' autoComplete='off'/>
+        <TextField label="Email" type="email" placeholder='Email'{...register('Email')} variant="outlined"  autoComplete='off' color='dark' />
+         <TextField label="Password" type='password' placeholder='Password' {...register('Password')}  variant="outlined" className='textfield-pass' autoComplete='off' color='dark' />
          <button type="submit">{isSubmitting?(<div className="submit-load"></div>
          ):("Login")}</button>
         {loginerr && <p style={{ color: "red" }}>{loginerr}</p>}

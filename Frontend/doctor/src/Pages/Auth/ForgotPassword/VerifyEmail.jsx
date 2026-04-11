@@ -83,7 +83,8 @@ const VerifyEmail = () => {
             <div className="verify-conatiner">
                 <div className="verify-mail">  <form onSubmit={handleEmailSubmit(Verification)}>
                     <div className="verify-user">
-                        <TextField label="Email" type="email" {...Emailregister("Email",{required:{value:true}})} placeholder='Email Address' 
+                        <TextField label="Email" type="email" {...Emailregister("Email",{required:{value:true}})} placeholder='Email Address'
+                        size='small' color="dark" 
                         />
                     </div>
                     <button type="submit"> {Emailsubmitting ? (
