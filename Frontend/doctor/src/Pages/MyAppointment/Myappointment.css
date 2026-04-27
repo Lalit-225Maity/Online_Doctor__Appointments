@@ -46,7 +46,7 @@ top: 110%;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
 }
 
-/* Doctor image */
+ 
 .appointment-doctor-image {
  
   width: 200px;
@@ -62,8 +62,7 @@ top: 110%;
   object-fit: cover;
   display: block;
 }
-
-/* Details section */
+ 
 .appointment-details-info {
    
  
@@ -80,7 +79,7 @@ top: 110%;
     align-items: center;
 }
 
-/* Confirm message */
+ 
 .confirm-msg {
   font-size: 12px;
   font-weight: 900;
@@ -90,23 +89,20 @@ top: 110%;
   width: fit-content;
    
 }
-
-/* Doctor name */
+ 
 .doctor-name {
   font-size: 15px;
   font-weight: 600;
   color: #111827;
   margin: 0 0 8px;
 }
-
-/* Info rows */
+ 
 .appointment-details-info p {
   font-size: 13px;
   color: #6b7280;
   margin: 0 0 4px;
 }
-
-/* Status badge */
+ 
 .status {
   font-size: 12px !important;
   font-weight: 500 !important;
@@ -118,7 +114,7 @@ top: 110%;
   margin-top: 4px !important;
 }
 
-/* Cancel button */
+ 
 .cancel-btn {
    
   padding: 7px 18px;
@@ -140,8 +136,7 @@ top: 110%;
 .cancel-btn:active {
   transform: scale(0.97);
 }
-
-/* Responsive */
+ 
 @media (max-width: 500px) {
   .appointment-card {
     flex-direction: column;
@@ -154,11 +149,10 @@ top: 110%;
     white-space: normal;
     text-align: center;
   }
-}
-/* ===== Full Screen Overlay ===== */
+} 
 .cancel-loading {
     position: fixed;
-    inset: 0;                 /* top:0 right:0 bottom:0 left:0 */
+    inset: 0;                 
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(3px);
     display: flex;
@@ -168,26 +162,24 @@ top: 110%;
     z-index: 9999;
     font-family: "Inter", sans-serif;
 }
-
-/* ===== Spinner ===== */
+ 
 .spin-load {
     width: 55px;
     height: 55px;
-    border: 6px solid #e5e7eb;     /* light gray */
-    border-top: 6px solid #0d6efd; /* blue accent */
+    border: 6px solid #e5e7eb;    
+    border-top: 6px solid #0d6efd;  
     border-radius: 50%;
     animation: spin 0.9s linear infinite;
     margin-bottom: 14px;
 }
 
-/* Spin animation */
+ 
 @keyframes spin {
     to {
         transform: rotate(360deg);
     }
 }
-
-/* ===== Text ===== */
+ 
 .cancel-loading p {
     font-size: 16px;
     font-weight: 500;

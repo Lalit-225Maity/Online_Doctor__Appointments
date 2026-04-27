@@ -62,7 +62,7 @@
 
  }
 
- /* Button Colors */
+ 
  .blue {
      background-color: #28a745;
      color: white;
@@ -202,8 +202,7 @@
 
  .checkbox-area {
      display: flex;
-     align-items: flex-start;
-     /* IMPORTANT: align from top */
+     align-items: flex-start; 
      width: 100%;
 
     
@@ -212,19 +211,19 @@
      background-color: #f9f9f9;
  }
 
- /* Checkbox */
+ 
  .checkbox-area input[type="checkbox"] {
      margin-top: 3px;
-     /* small adjustment to align with text */
+    
  }
 
- /* Label text */
+ 
  .checkbox-area label {
      font-size: 13px;
      color: #555;
      line-height: 1.4;
      flex: 1;
-     /* takes full width */
+    
  }
 
  .payment-process-loading {

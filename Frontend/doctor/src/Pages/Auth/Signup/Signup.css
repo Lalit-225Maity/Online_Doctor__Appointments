@@ -10,13 +10,12 @@
     background: linear-gradient(to right, #f5f7fa, #e4f2f7);
 }
 
-/* Left Image */
+ 
 .signup img {
     width: 420px;
     max-width: 100%;
 }
-
-/* Form Card */
+ 
 .user-form {
     width: 380px;
     background: #ffffff;
@@ -33,7 +32,7 @@
     color: #333;
 }
 
-/* Form Layout */
+ 
 .user-form form {
     display: flex;
     flex-direction: column;
@@ -42,7 +41,7 @@
 
 
 
-/* Button style */
+ 
 .user-form button {
   width: 100%;
   padding: 12px;
@@ -61,13 +60,13 @@
   background: #0b5ed7;
 }
 
-/* Disable button while loading */
+ 
 .user-form button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
 
-/* Spinner container */
+ 
 .account-creates {
   width: 22px;
   height: 22px;
@@ -78,7 +77,7 @@
   margin: auto;
 }
 
-/* Rotation animation */
+ 
 @keyframes spin {
   to {
     transform: rotate(360deg);
