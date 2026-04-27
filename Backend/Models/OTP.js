@@ -7,6 +7,11 @@ const otp=new Schema({
     Email:{
         type:String,
         required:true
+    },
+    disappearAt:{
+        type:Date,
+        default:Date.now,
+        expires:300
     }
 })
 const Otp=model("OTP",otp);
