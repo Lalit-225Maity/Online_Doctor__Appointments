@@ -21,13 +21,13 @@ const Home = () => {
         await new Promise((resolve, reject) => {
             setTimeout(async () => {
                 try {
-                    const API_URL = process.env.DOC_URL;
-                const response = await axios.get(`${API_URL}/api/fethdoctor?keyword=${data.keyword}`);
+                    const response = await axios.get(`/api/fethdoctor?keyword=${data.keyword}`);
                     console.log(response.data.docDetail);
                     navigate('/doctors', { state: { doc: response.data.docDetail, department: data.keyword } })
                     resolve("success");
 
                 } catch (error) {
+                    reject();
                     console.log(error.message);
 
                 }
