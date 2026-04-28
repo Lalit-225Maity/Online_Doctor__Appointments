@@ -40,7 +40,7 @@ const Home = () => {
         handleSubmit(SelectDoc)()
     }
     return (
-        <div className='home' onClick={(e) => { settick(false) }} >
+        <div className='home' onClick={() => { settick(false) }} >
         <Helmet>
             <title>Home</title>
         </Helmet>
