@@ -4,8 +4,10 @@ import './Signup.css'
 import TextField from '@mui/material/TextField'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 const Signup = () => {
   const navigate = useNavigate();
+  const [signup_err, setsignup_err] = useState('');
   const {
     register,
     handleSubmit,
@@ -24,6 +26,7 @@ const Signup = () => {
         } catch (error) {
           const err = error.response.data.message;
           console.log(err);
+          setsignup_err(err);
           reject("False")
 
 
@@ -48,6 +51,7 @@ const Signup = () => {
           ):("create account")}</button>
          
         </form>
+        {signup_err?<p style={{color:"red"}}>{signup_err}</p>:''}
       </div>
     </div>
   )

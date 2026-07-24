@@ -4,6 +4,12 @@ const User = require('../Models/UserModel');
 const CreateAccount = async (req, res) => {
     try {
         const { Name, Email, PhoneNumber, Password, Address, ConfirmPassword } = req.body;
+        const Test_Email=await User.findOne({Email});
+        if(Test_Email){
+            return res.status(400).json({
+                message:"User is Already exists "
+            })
+        }
 
         if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z\d]).{8,}$/.test(Password)) {
             return res.status(400).json({
