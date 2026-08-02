@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import axios from 'axios'
+import API from '../../API/axios'
 const Navbar = () => {
     const [userhover, setuserhover] = useState(false);
     const [username, setusername] = useState('')
@@ -30,7 +31,7 @@ const Navbar = () => {
 }, []);
     const Logout = async () => {
         try {
-            const response2 = await axios.post('/api/logout');
+            const response2 = await API.post('/api/logout');
             localStorage.removeItem("Name");
             localStorage.removeItem("Email_ID");
             console.log(response2.data);

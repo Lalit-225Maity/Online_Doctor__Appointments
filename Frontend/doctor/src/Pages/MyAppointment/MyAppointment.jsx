@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import API from '../../API/axios' 
 import './Myappointment.css'
 import { Helmet } from 'react-helmet'
 const MyAppointment = () => {
@@ -9,7 +9,7 @@ const MyAppointment = () => {
 
 
         try {
-            const response2 = await axios.delete('/api/cancelappointment', {
+            const response2 = await API.delete('/api/cancelappointment', {
                 data: { appointmentId: ID }
 
             })

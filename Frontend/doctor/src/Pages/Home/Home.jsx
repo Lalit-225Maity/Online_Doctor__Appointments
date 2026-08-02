@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Typewriter } from 'react-simple-typewriter'
 import './Home.css'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
+ 
+import API from '../../API/axios'
 import { Helmet } from 'react-helmet'
 import { useNavigate } from 'react-router-dom'
 import HealthAdvise from './HealthAdvise/HealthAdvise'
@@ -21,7 +22,7 @@ const Home = () => {
         await new Promise((resolve, reject) => {
             setTimeout(async () => {
                 try {
-                    const response = await axios.get(`/api/fethdoctor?keyword=${data.keyword}`);
+                    const response = await API.get(`/api/fethdoctor?keyword=${data.keyword}`);
                     console.log(response.data.docDetail);
                     navigate('/doctors', { state: { doc: response.data.docDetail, department: data.keyword } })
                     resolve("success");

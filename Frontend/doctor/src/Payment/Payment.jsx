@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import axios from 'axios'
+import API from '../API/axios' 
 
 const Payment = () => {
     const navigate = useNavigate();
@@ -53,7 +53,7 @@ const Payment = () => {
                         id: id
                     }
                     if (method === 'UPI') {
-                        const response = await axios.post('/api/pay', newData);
+                        const response = await API.post('/api/pay', newData);
                         console.log(response.data);
 
                         if (response.data.success) {

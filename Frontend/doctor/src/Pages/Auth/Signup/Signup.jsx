@@ -2,7 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import './Signup.css'
 import TextField from '@mui/material/TextField'
-import axios from 'axios'
+import API from '../../../API/axios' 
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 const Signup = () => {
@@ -18,7 +18,7 @@ const Signup = () => {
     await new Promise((resolve, reject) => {
       setTimeout(async () => {
         try {
-          const response = await axios.post('/api/create', data);
+          const response = await API.post('/api/create', data);
           console.log(response.data);
           resolve("success");
           navigate('/login');

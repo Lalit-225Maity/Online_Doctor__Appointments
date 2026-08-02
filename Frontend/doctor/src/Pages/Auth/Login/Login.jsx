@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
+import API from '../../../API/axios'; 
  import Helmet from 'react-helmet'
 import TextField from '@mui/material/TextField';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +21,7 @@ const Login = () => {
     await new Promise((resolve, reject) => {
       setTimeout(async () => {
         try {
-          const response = await axios.post('/api/login', data);
+          const response = await API.post('/api/login', data);
           console.log(response.data.user.Name);
 
           setuserLogin(true);
