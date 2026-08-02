@@ -6,15 +6,7 @@ const cors = require("cors");
 const app=express();
 app.use(express.json());
 app.use(cookie())
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173", // Local frontend
-      "https://your-frontend.vercel.app", // Replace with your frontend URL
-    ],
-    credentials: true,
-  })
-);
+ 
 dotenv.config();
 const Database=require('./Database/db');
 Database();
@@ -30,8 +22,9 @@ app.get("/", (req, res) => {
     message: "Backend is running successfully 🚀",
   });
 });
-const port=process.env.PORT;
-app.listen(port,()=>{
-    console.log(`server running at ${port}`);
+// const port=process.env.PORT;
+// app.listen(port,()=>{
+//     console.log(`server running at ${port}`);
     
-})
+// })
+module.exports=app;
