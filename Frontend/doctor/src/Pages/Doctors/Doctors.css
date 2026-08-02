@@ -31,8 +31,7 @@
  }
 
 
-
- /* Doctor Image */
+ 
  .doc-img img {
      width: 150px;
      height: 150px;
@@ -42,7 +41,7 @@
      padding: 4px;
  }
 
- /* Doctor Info */
+ 
  .doc-info {
      text-align: center;
      margin-top: 15px;
@@ -60,7 +59,7 @@
      margin: 4px 0;
  }
 
- /* Hospital Radio Box */
+  
  .radio {
      margin-top: 12px;
      padding: 10px 15px;
@@ -79,7 +78,7 @@
      height: 18px;
  }
 
- /* Contact Section */
+ 
  .contact-info {
      display: flex;
      align-items: center;
