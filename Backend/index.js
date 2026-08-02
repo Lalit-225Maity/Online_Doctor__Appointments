@@ -13,7 +13,7 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(cookie())
+app.use(cookie());
 dotenv.config();
 const Database=require('./Database/db');
 Database();

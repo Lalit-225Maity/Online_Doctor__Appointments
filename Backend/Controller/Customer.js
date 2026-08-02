@@ -4,10 +4,10 @@ const User = require('../Models/UserModel');
 const CreateAccount = async (req, res) => {
     try {
         const { Name, Email, PhoneNumber, Password, Address, ConfirmPassword } = req.body;
-        const Test_Email=await User.findOne({Email});
-        if(Test_Email){
+        const Test_Email = await User.findOne({ Email });
+        if (Test_Email) {
             return res.status(400).json({
-                message:"User is Already exists "
+                message: "User is Already exists "
             })
         }
 
@@ -32,7 +32,12 @@ const CreateAccount = async (req, res) => {
         });
 
         const token = jwt.sign({ id: customer._id, email: customer.Email }, "shhhhhhh");
-        res.cookie("token", token)
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
         await customer.save();
         res.status(200).json({
             success: true,
@@ -69,7 +74,9 @@ const Login = async (req, res) => {
         const token = jwt.sign({ id: Check._id, Email: Check.Email }, "shhhhhhh");
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false,
+            secure: true,
+            sameSite: "none",
+            maxAge: 7 * 24 * 60 * 60 * 1000
         });
 
         res.status(200).json({
