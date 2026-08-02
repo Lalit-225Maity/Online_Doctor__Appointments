@@ -63,7 +63,7 @@ const Payment = () => {
                         resolve("success");
                     }
                     if (method === 'Debit Card') {
-                        const response = await axios.post('/api/pay', CardData);
+                        const response = await API.post('/api/pay', CardData);
                         console.log(response.data);
                         if (response.data.success) {
                             navigate('/myappointment')

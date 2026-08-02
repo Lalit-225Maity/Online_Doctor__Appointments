@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import API from '../../API/axios' 
 import './Myappointment.css'
 import { Helmet } from 'react-helmet'
+ 
 const MyAppointment = () => {
     const [booking, setbooking] = useState([]);
     const[cancel,setcancel]=useState(false);
@@ -21,7 +22,7 @@ const MyAppointment = () => {
             }, 3000);
 
         } catch (error) {
-
+                 
         }
 
     }
@@ -29,7 +30,7 @@ const MyAppointment = () => {
         (async () => {
             try {
 
-                const response = await axios.get(
+                const response = await API.get(
                     "/api/appointmentdetails",
                     { withCredentials: true }
                 );
