@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server:{
      proxy:{
-      '/api':'online-doctor-appointments-indol.vercel.app'
+      '/api':'https://doctor-online-appointment.onrender.com'
      },
   },
   plugins: [react()],
